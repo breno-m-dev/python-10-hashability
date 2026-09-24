@@ -24,13 +24,14 @@ e = [1, {2, 3}]
 
 test = [a, b, c, d, e]
 
-def is_hashable(obj):
+def is_hashable(obj) -> bool:
     try:
         hash(obj)
     except Exception as e:
         return False
     return True
-def why_not_hashable(obj):
+
+def why_not_hashable(obj) -> str:
     
     if isinstance(obj,(list, dict, set)):
         output ="Object not hashable because it is a "
@@ -50,11 +51,14 @@ def why_not_hashable(obj):
 
     except Exception:
         return "reason for object not being hashable is unkown"
-        
-for item in test:
-    if(is_hashable(item)):
-        print(f"{item} is hashable")
-    else:
-        
-      print(f"{str(item)} {why_not_hashable(item)}")
+def main():       
+    for item in test:
+        if(is_hashable(item)):
+            print(f"{item} is hashable")
+        else:
+            
+            print(f"{str(item)} {why_not_hashable(item)}")
+
+if __name__ == '__main__':
+    main()
 
